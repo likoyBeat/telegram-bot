@@ -1,18 +1,20 @@
-import telebot 
-import types
+import telebot
+import os
 
-bot = telebot.TeleBot("5860500843:AAFU1nqGiGMy_H37R44nt77r1nXg3HJPNxw") 
+TOKEN = os.environ.get("TELEGRAM_TOKEN")
+bot = telebot.TeleBot(TOKEN)
 
+# 👇 ДОБАВЬТЕ ЭТУ СТРОЧКУ (ПЕРЕД polling)
+bot.remove_webhook()
 
 @bot.message_handler(commands=['start'])
-def main(message):
-    markup = types.InlineKeyboardMarkup()
-    markup.add(types.InlineKeyboardButton("погода"))
-    bot.send_message(message.chat.id, f'Привет {message.from_user.first_name}')
+def start(message):
+    bot.reply_to(message, "Привет! Я бот на Render! 🚀")
 
-@bot.message_handler(commands=['help'])
-def main(message):
-    bot.send_message(message.chat.id, 'help information')
+@bot.message_handler(func=lambda message: True)
+def echo_all(message):
+    bot.reply_to(message, message.text)
 
-
-bot.polling(none_stop=True)
+if __name__ == "__main__":
+    print("✅ Бот успешно запущен!")
+    bot.polling(none_stop=True)
