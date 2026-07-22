@@ -1,7 +1,7 @@
 import telebot
 import os
 
-TOKEN = os.environ.get("TELEGRAM_TOKEN")
+TOKEN = os.environ.get("8926868737:AAEgdnvgSwGWZca_e1f-hclYU3Io2sQkWYc")
 bot = telebot.TeleBot(TOKEN)
 
 # 👇 ДОБАВЬТЕ ЭТУ СТРОЧКУ (ПЕРЕД polling)
