@@ -27,7 +27,7 @@ WEBHOOK_URL = f"https://{render_url}/webhook"
 
 @bot.message_handler(commands=['start'])
 def main(message):
-    bot.send_message(message.chat.id, 'ПРИВЕТ')
+    bot.send_message(message.chat.id, 'Привет')
 
 bot.polling(none_stop=True)
 
